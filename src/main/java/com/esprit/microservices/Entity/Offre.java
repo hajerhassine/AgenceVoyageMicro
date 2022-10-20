@@ -1,16 +1,16 @@
-package com.esprit.microservice.Entity;
+package com.esprit.microservices.Entity;
 
 import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Offre  implements Serializable {
+public class Offre implements Serializable {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private int idOffre;
 	private String nom;
     private String type;
@@ -19,23 +19,6 @@ public class Offre  implements Serializable {
     private String datefin;
     private int prix ;
     private String description ;
-    
-    
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public Offre() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Offre(String nom2) {
-		super();
-this.nom=nom2;
-		// TODO Auto-generated constructor stub
-	}
 	public int getIdOffre() {
 		return idOffre;
 	}
@@ -48,29 +31,17 @@ this.nom=nom2;
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public String gettype() {
+	public String getType() {
 		return type;
 	}
-	public void settype(String type) {
+	public void setType(String type) {
 		this.type = type;
 	}
-	public String getdatedebut() {
+	public String getDatedebut() {
 		return datedebut;
 	}
-	public void setdatedebut(String datedebut) {
+	public void setDatedebut(String datedebut) {
 		this.datedebut = datedebut;
-	}
-	public String getdatefin() {
-		return datefin;
-	}
-	public void setdatefin(String datefin) {
-		this.datefin = datefin;
-	}
-	public int getprix() {
-		return prix;
-	}
-	public void setprix(int prix) {
-		this.prix = prix;
 	}
 	public String getImage() {
 		return image;
@@ -78,14 +49,46 @@ this.nom=nom2;
 	public void setImage(String image) {
 		this.image = image;
 	}
+	public String getDatefin() {
+		return datefin;
+	}
+	public void setDatefin(String datefin) {
+		this.datefin = datefin;
+	}
+	public int getPrix() {
+		return prix;
+	}
+	public void setPrix(int prix) {
+		this.prix = prix;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public Offre(int idOffre, String nom, String type, String datedebut, String image, String datefin, int prix,
+			String description) {
+		super();
+		this.idOffre = idOffre;
+		this.nom = nom;
+		this.type = type;
+		this.datedebut = datedebut;
+		this.image = image;
+		this.datefin = datefin;
+		this.prix = prix;
+		this.description = description;
+	}
+	public Offre() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
 		return "Offre [idOffre=" + idOffre + ", nom=" + nom + ", type=" + type + ", datedebut=" + datedebut + ", image="
 				+ image + ", datefin=" + datefin + ", prix=" + prix + ", description=" + description + "]";
 	}
+
 	
-
-
-
 
 }

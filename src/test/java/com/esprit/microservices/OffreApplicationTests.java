@@ -1,4 +1,4 @@
-package com.esprit.microservice;
+package com.esprit.microservices;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
