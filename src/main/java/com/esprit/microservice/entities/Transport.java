@@ -11,7 +11,7 @@ public class Transport implements Serializable {
 	@Id
 	@GeneratedValue
 	private int id;
-	private String categorie,  modele;
+	private String categorie,  image, modele;
 	private int prix;
 	public int getId() {
 		return id;
@@ -38,13 +38,21 @@ public class Transport implements Serializable {
 	public void setPrix(int prix) {
 		this.prix = prix;
 	}
-	public Transport(int id, String categorie, String modele, int prix) {
+	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public Transport(int id, String categorie, String modele, int prix, String image) {
 		super();
 		this.id = id;
 		this.categorie = categorie;
-	
 		this.modele = modele;
 		this.prix = prix;
+		this.image = image;
+		
 	}
 	public Transport() {
 		super();

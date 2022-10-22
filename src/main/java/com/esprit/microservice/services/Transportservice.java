@@ -63,7 +63,7 @@ private TransportRepository transportRepository;
 	        }
 
 
-	      //  a.setImage(newFileName);
+	        a.setImage(newFileName);
 
 	        Transport art = transportRepository.save(a);
 
@@ -103,7 +103,7 @@ private TransportRepository transportRepository;
 				Transport existingTransport = transportRepository.findById(id).get();
 				existingTransport.setModele(newTransport.getModele());
 			existingTransport.setCategorie(newTransport.getCategorie());
-		//	existingTransport.setImage(newTransport.getImage());
+			existingTransport.setImage(newTransport.getImage());
 				existingTransport.setPrix(newTransport.getPrix());
 
 				 return new ResponseEntity<>(transportRepository.save(existingTransport), HttpStatus.OK);
