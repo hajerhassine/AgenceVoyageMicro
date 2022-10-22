@@ -39,19 +39,9 @@ private ReservationRepository reservationRepository;
 			return " reservation non supprimé";
 	}
 
-	public Reservation updateReservation(int id, Reservation a) {
+	public Reservation updateReservation( Reservation a) {
 
-		if (reservationRepository.findById(id).isPresent()) {
-			Reservation existingReservation = reservationRepository.findById(id).get();
-			existingReservation.setDateReservation(a.getDateReservation());
-			existingReservation.setDuree(a.getDuree());
-			existingReservation.setHeureReservation(a.getHeureReservation());
-			return reservationRepository.save(existingReservation);
+		reservationRepository.save(a); 
+		return a;
 
-		}
-		else
-			return null;
-
-	}
-
-}
+}}

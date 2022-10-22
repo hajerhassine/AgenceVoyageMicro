@@ -23,7 +23,7 @@ import com.esprit.microservice.services.Reservationservice;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins ="http://localhost:4200")
 @RequestMapping(value = "/api/reservation")
 public class ReservationRestApi {
 	private String title = "Hello,I'm the reservation Microservice";
@@ -58,11 +58,11 @@ public class ReservationRestApi {
 		return new ResponseEntity<>(reservationService.getByIdReservation(id), HttpStatus.OK);
 	}
 
-	@PutMapping("/edit/{id}")
+	@PutMapping("/edit")
 	@ResponseStatus(HttpStatus.OK)
-	public Reservation updateReservation(@PathVariable(value = "id") int id, @RequestBody Reservation a) {
+	public Reservation updateReservation(@RequestBody Reservation a) {
 
-		return reservationService.updateReservation(id, a);
+		return reservationService.updateReservation(a);
 	}
 
 	@DeleteMapping("/delete/{id}")
