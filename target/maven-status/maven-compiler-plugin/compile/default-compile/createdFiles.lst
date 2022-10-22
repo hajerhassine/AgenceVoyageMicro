@@ -1,0 +1,6 @@
+com\esprit\microservice\Service\HotelService.class
+com\esprit\microservice\AgenceDeVoyageMicroProjectApplication.class
+com\esprit\microservice\Entity\Hotel.class
+com\esprit\microservice\Controller\HotelRestApi.class
+com\esprit\microservice\Repository\HotelRepository.class
+com\esprit\microservice\Service\IHotelService.class
