@@ -6,6 +6,7 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JsonParseException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.MediaType;
 
 @RestController
+
+@CrossOrigin(origins ="http://localhost:4200")
 @RequestMapping("/offre")
 public class OffreRestApi {
 
@@ -44,10 +47,21 @@ public class OffreRestApi {
 //	}
 	@PostMapping("/add")
 	@ResponseBody
-	public ResponseEntity<Response>  addHotel(@RequestPart("file") MultipartFile file,@RequestParam("offre") String s)throws JsonParseException, JsonMappingException, Exception {
+	public ResponseEntity<Response>  addoffre(@RequestPart("file") MultipartFile file,@RequestParam("offre") String s)throws JsonParseException, JsonMappingException, Exception {
 		 return offreservice.add(file,s);
 	}
+	@PostMapping("/edit")
+	@ResponseBody
+	public ResponseEntity<Response>  updateoffre( @RequestPart("file") MultipartFile file,@RequestParam("offre") String a)throws JsonParseException, JsonMappingException, Exception {
+		 return offreservice.put(file,a);
+	}
+	
+	@GetMapping("/get/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<Offre> getByIdTransport(@PathVariable(value = "id") int id) {
 
+	return new ResponseEntity<>(offreservice.getByIdoffre(id), HttpStatus.OK);
+	}
 	@GetMapping("/getalloffre")
 	public List<Offre> getoffre() {
 
@@ -56,12 +70,12 @@ public class OffreRestApi {
 
 	}
 
-	@PutMapping(value = "updateoffre/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<Offre> updateoffre(@PathVariable(value = "id") int id, @RequestBody Offre mh) {
-		return new ResponseEntity<>(offreservice.updateoffre(id, mh), HttpStatus.OK);
+	//@PutMapping(value = "updateoffre/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	//@ResponseStatus(HttpStatus.OK)
+	//public ResponseEntity<Offre> updateoffre(@PathVariable(value = "id") int id, @RequestBody Offre mh) {
+	//	return new ResponseEntity<>(offreservice.updateoffre(id, mh), HttpStatus.OK);
 
-	}
+//	}
 
 	@DeleteMapping(value = "deleteoffre/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)

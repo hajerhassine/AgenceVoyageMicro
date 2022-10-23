@@ -81,7 +81,7 @@ public class Offre implements Serializable {
 	}
 	public Offre() {
 		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 	@Override
 	public String toString() {

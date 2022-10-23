@@ -45,15 +45,15 @@ public class OffreService {
 
         System.out.println("Ok .............");
         Offre s = new ObjectMapper().readValue(Offre, Offre.class);
-        boolean isExit = new File(context.getRealPath("/Images/")).exists();
+        boolean isExit = new File(context.getRealPath("/offre/Images/")).exists();
         if (!isExit)
         {
-            new File (context.getRealPath("/Images/")).mkdir();
+            new File (context.getRealPath("/offre/Images/")).mkdir();
             System.out.println("mkdir success.............");
         }
         String filename = file.getOriginalFilename();
         String newFileName = FilenameUtils.getBaseName(filename)+"."+FilenameUtils.getExtension(filename);
-        File serverFile = new File (context.getRealPath("/Images/"+File.separator+newFileName));
+        File serverFile = new File (context.getRealPath("/offre/Images/"+File.separator+newFileName));
         try
         {
             System.out.println("Image");
@@ -90,20 +90,71 @@ public class OffreService {
 
 	}
 
-	public Offre updateoffre(int id, Offre newoffre) {
-		if (offrerepo.findById(id).isPresent()) {
-			Offre existingoffre = offrerepo.findById(id).get();
-			existingoffre.setNom(newoffre.getNom());
-			existingoffre.setType(newoffre.getType());
-			existingoffre.setDatedebut(newoffre.getDatedebut());
-			existingoffre.setImage(newoffre.getImage());
-			existingoffre.setDatefin(newoffre.getDatefin());
-			existingoffre.setPrix(newoffre.getPrix());
-			existingoffre.setDescription(newoffre.getDescription());
-			return offrerepo.save(existingoffre);
-		} else
-			return null;
+	
+	public ResponseEntity<Response> put( MultipartFile file, String Offre)
+			throws JsonParseException, JsonMappingException, Exception {
+
+			
+	        System.out.println("Ok .............");
+	        Offre a = new ObjectMapper().readValue(Offre, Offre.class);
+	        boolean isExit = new File(context.getRealPath("/offre/Images/")).exists();
+	        if (!isExit)
+	        {
+	            new File (context.getRealPath("/offre/Images/")).mkdir();
+	            System.out.println("mkdir success.............");
+	        }
+	        String filename = file.getOriginalFilename();
+	        String newFileName = FilenameUtils.getBaseName(filename)+"."+FilenameUtils.getExtension(filename);
+	        File serverFile = new File (context.getRealPath("/offre/Images/"+File.separator+newFileName));
+	        try
+	        {
+	            System.out.println("Image");
+	            FileUtils.writeByteArrayToFile(serverFile,file.getBytes());
+
+	        }catch(Exception e) {
+	            e.printStackTrace();
+	        }
+
+
+	        a.setImage(newFileName);
+
+	        Offre art = offrerepo.save(a);
+
+
+
+	        if (art != null)
+	        {
+	        	   
+	            return new ResponseEntity<Response>( HttpStatus.OK);
+	        }
+	        else
+	        {
+	            return new ResponseEntity<Response>(HttpStatus.BAD_REQUEST);
+	        }
+
+
+
 	}
+
+	public Offre getByIdoffre(int id) {
+		Offre r =  offrerepo.findById(id).get();
+
+		return r;
+	}
+	//public Offre updateoffre(int id, Offre newoffre) {
+	//	if (offrerepo.findById(id).isPresent()) {
+	//		Offre existingoffre = offrerepo.findById(id).get();
+	//		existingoffre.setNom(newoffre.getNom());
+	//		existingoffre.setType(newoffre.getType());
+	//		existingoffre.setDatedebut(newoffre.getDatedebut());
+	//		existingoffre.setImage(newoffre.getImage());
+	//		existingoffre.setDatefin(newoffre.getDatefin());
+	//		existingoffre.setPrix(newoffre.getPrix());
+	//		existingoffre.setDescription(newoffre.getDescription());
+	//		return offrerepo.save(existingoffre);
+	//	} else
+	//		return null;
+	//}
 
 	public String deleteoffre(int id) {
 		if (offrerepo.findById(id).isPresent()) {
