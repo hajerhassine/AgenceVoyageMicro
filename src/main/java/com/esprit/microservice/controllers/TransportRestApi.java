@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.esprit.microservice.Repositories.TransportRepository;
 import com.esprit.microservice.entities.Transport;
@@ -33,6 +34,8 @@ import com.esprit.microservice.services.ITransportservice;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 
+
+@CrossOrigin(origins ="http://localhost:4200")
 @RestController
 @RequestMapping(value = "/api/transport")
 public class TransportRestApi {
@@ -47,19 +50,17 @@ public class TransportRestApi {
 	public ResponseEntity<Response>  addTransport(@RequestPart("file") MultipartFile file,@RequestParam("transport") String a)throws JsonParseException, JsonMappingException, Exception {
 		 return transportService.add(file,a);
 	}
-	//@PutMapping("/edit/{id}")
-	//@ResponseStatus(HttpStatus.OK)
-	//public Transport updateTransport(@PathVariable(value = "id") int id, @RequestBody Transport a) {
-
-	//	return transportService.updateTransport(id, a);
-	//}
 	
-	@PutMapping("/update-Hotel/{id}")
-@ResponseBody
-	ResponseEntity<Transport> updateHotel(@PathVariable("id") int id,@RequestBody Transport a){
-		return transportService.updateTransport(id,a);
+	
+	@PostMapping("/edit")
+	@ResponseBody
+	public ResponseEntity<Response>  updateTransport( @RequestPart("file") MultipartFile file,@RequestParam("transport") String a)throws JsonParseException, JsonMappingException, Exception {
+		 return transportService.put(file,a);
 	}
 	
+	
+	
+
 @RequestMapping("/hello")
 	
 	public String sayHello(){
@@ -80,6 +81,7 @@ public List<Transport> getTransports() {
 	List<Transport> listTransport = (List<Transport>) transportRepository.findAll();
 	return listTransport;
 
+	
 }
 
 @GetMapping("/get/{id}")

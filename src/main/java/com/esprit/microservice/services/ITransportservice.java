@@ -16,11 +16,13 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 public interface ITransportservice {
-	ResponseEntity<Response> add(MultipartFile file, String Hotel)
+	ResponseEntity<Response> add(MultipartFile file, String Transport)
 			throws JsonParseException, JsonMappingException, Exception;
 	
-	ResponseEntity<Transport> updateTransport(int id, Transport a);
-	//public Transport updateTransport(int id, Transport a);
+	ResponseEntity<Response> put(MultipartFile file, String Transport)
+			throws JsonParseException, JsonMappingException, Exception;
+	
+	
 	
 	String deleteTransport(int id);
 	public List<Transport> getAllTransport();
