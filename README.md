@@ -32,9 +32,7 @@ Offer : Simple REST service created with Spring Boot, Spring Data JPA, MySQL
 
 
 
-<img width="621" alt="agencedevoyage-diagdeclass" src="https://user-images.githubusercontent.com/60820674/139314068-56201fa3-f8c4-4e32-9413-13246dfc8ab5.PNG">
 
-<img width="592" alt="agencedevoyage_graphe1" src="https://user-images.githubusercontent.com/60820674/139314092-b30b23b2-7cc6-4e8f-9ccd-599e6206cd32.PNG">
 
 
 # Tools :
