@@ -1,1 +1,46 @@
+version: "2.7.4"
+services:
+ 
 
+ 
+  maisonhote:
+    container_name: maisonhote
+    build: D:\MicroservicesWorkSpace\MaisonHoteMicroservice
+    ports:
+      - "8081:8081"
+    hostname: maisonhote
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql_2:3306/agencevoyage?autoReconnect=true&useSSL=false
+      
+    image: "maisonhote"
+    depends_on:
+      - mysql_2
+
+    
+  userservicemongo:
+    build : D:\MicroservicesWorkSpace\login\CrudLoginUser-master - Copie
+    ports:
+      - "5000:5000"
+    environment:
+     - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka
+    command: npm start
+    
+    image : userservicemongo
+    depends_on:
+      -  discovery  
+       
+  mysql_2:
+    image: "mysql:5.6"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=agencevoyage
+    ports:
+      - 3308:3306
+
+      
+  discovery:
+    build: D:\MicroservicesWorkSpace\EurekaServer
+    ports:
+      - "8761:8761"
+    image: "discovery-service"    
