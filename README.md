@@ -51,7 +51,7 @@ First we need to run Eureka
 
 Second we need to run our MSs
 
-Finally we need to run zuul-server, if we did run zuul-server before running the microservices then we have to wait approximately 10 second
+Finally we need to run zuul-server, if we did run API Cloud Gateway before running the microservices then we have to wait approximately 10 second
 
 ## Eureka Service
 Eureka Server is an application that holds the information about all client-service applications. Every Micro service will register into the Eureka server and Eureka server knows all the client applications running on each port and IP address. 
