@@ -138,13 +138,11 @@ Micro Service Facture, Client, Réservation :
 ( GET ) - /api/../get/{id} => Afficher les détails d'un seul donnée
 
 ## Micro Service Node 
-Micro Service Hotel :
+Micro Service User :
 
-( POST )- /api/hotel => Ajouter 
-( PUT ) - /api/hotel/{id} => Modifier 
-( DELETE ) - /api/hotel/{id} => Suprrimer 
-( GET ) - /api/hotel => Afficher la liste entières des Hôtels
-( GET ) - /api/hotel/{id} => Afficher les détails d'un Hôtel
+( POST )- /api/users/new => Ajouter (register) 
+( POST ) - /api/users/loginUser => login
+
 
 ## Config Server
 Config Server is used for all MS, already configured.
