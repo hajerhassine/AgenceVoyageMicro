@@ -16,6 +16,18 @@ services:
     image: "maisonhote"
     depends_on:
       - mysql_2
+      
+       transport:
+    container_name: transport
+    build: D:\MicroservicesWorkSpace\transport
+    ports:
+      - "8086:8086"
+    hostname: transport
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka
+    image: "transport"
+    depends_on:
+      - discovery
 
     
   userservicemongo:
