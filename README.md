@@ -9,7 +9,7 @@ Distributed architecture or distributed computing refers to an information syste
 
 The frameworks are Spring Boot for the Backend and Angular as the Frontend. 
 
-6 services are implemented: User(NodeJs), Reservation, Hotel, Guest House, and Transport.
+6 services are implemented: User(NodeJs), Reservation, Hotel,Offer, Guest House, and Transport.
 
 The servers are: Eureka, API Gateway and Config.
 
