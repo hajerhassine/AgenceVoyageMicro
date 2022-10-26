@@ -129,7 +129,6 @@ spring:
 
 
 ## Micro Service Spring
-Micro Service Facture, Client, Réservation :
 
 ( POST )- /api/../add => Ajouter 
 ( PUT ) - /api/../edit/{id} => Modifier
